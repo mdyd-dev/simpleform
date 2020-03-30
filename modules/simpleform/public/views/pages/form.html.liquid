@@ -1,0 +1,19 @@
+---
+slug: __form
+method: post
+---
+
+{% assign data = context.params | to_hash %}
+
+{% graphql data: data %}
+
+mutation notify($data: HashObject) {
+  email_send(
+      template: { name: "modules/simpleform/form" }
+      data: $data
+  ) {
+      errors { message }
+  }
+}
+
+{% endgraphql %}
