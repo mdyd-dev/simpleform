@@ -2,22 +2,19 @@
 slug: __form
 method: post
 ---
-
 {% assign data = context.params | to_hash %}
 
 {% graphql data: data %}
-
 mutation notify($data: HashObject) {
   email_send(
-      template: { name: "modules/simpleform/form" }
-      data: $data
+    template: { name: "modules/simpleform/form" }
+    data: $data
   ) {
-      errors { message }
+    errors { message }
   }
 }
-
 {% endgraphql %}
 
-<script>
-  window.history.back();
-</script>
+<html>
+  <script>window.history.back();</script>
+</html>
